@@ -1,0 +1,94 @@
+    1  clear
+    2  wget https://dlcdn.apache.org/maven/maven-3/3.9.9/binaries/apache-maven-3.9.9-bin.tar.gz
+    3  ls
+    4  tar -zxvf apache-maven-3.9.9-bin.tar.gz
+    5  clear
+    6  ls
+    7  sudo ls /opt
+    8  sudo mv apache-maven-3.9.9 /opt
+    9  sudo ls /opt
+   10  M2_HOME='/opt/apache-maven-3.9.9'
+   11  PATH="$M2_HOME/bin:$PATH"
+   12  export PATH
+   13  curl -LO https://corretto.aws/downloads/latest/amazon-corretto-11-x64-linux-jdk.tar.gz
+   14  ls
+   15  tar -zxvf amazon-corretto-11-x64-linux-jdk.tar.gz
+   16  clear
+   17  ls
+   18   sudo ls /opt
+   19  sudo mv amazon-corretto-11.0.24.8.1-linux-x64 /opt
+   20   sudo ls /opt
+   21  JAVA_HOME='/opt/amazon-corretto-11.0.24.8.1-linux-x64'
+   22   PATH="$JAVA_HOME/bin:$PATH"
+   23  export PATH
+   24  java -version
+   25  mvn -v
+   26  clear
+   27  mvn archetype:generate -DarchetypeGroupId=org.apache.maven.archetypes -DarchetypeArtifactId=maven-archetype-webapp -DarchetypeVersion=1.4
+                                groupid:webapplication,artifactid:demoweb
+
+
+   28  ll
+   29  cd demoweb/
+   30  clear
+   31  ll
+   32  sudo yum install tree
+   33  clear
+   34  tree .
+   35  vi src/main/webapp/index.jsp
+   36  mvn validate
+   37  ll
+   38  tree .
+   39  clear
+   40  tree .
+   41  mvn compile
+   42  ll
+   43  clear
+   44  tree .
+   45  mvn test
+   46  clear
+   47  tree .
+   48  mvn package
+   49  tree .
+   50  mvn install
+   51  tree .
+   52  ls /home/ec2-user/.m2/repository/webapplication/demoweb/1.0-SNAPSHOT/
+
+
+
+Creating .war file from GitHub Repo:
+   
+   55  clear
+   56  cd ..
+   57  pwd
+   58  clear
+   59  sudo yum install git
+   60  clear
+   61  git --version
+   62  git clone https://github.com/awsdeveloper8792/war-web-project.git
+   63  ls
+   64  cd war-web-project
+   65  ls
+   66  git status
+   67  mvn compile
+   68  mvn test
+   69  mvn package
+   70  ll
+   71  tree .
+   72  mvn install
+   73  ls /home/ec2-user/.m2/repository/koddas/web/war/wwp/1.0.0/
+   74  clear
+   75  cd ..
+   76  pwd
+   77  git clone https://github.com/awsdeveloper8792/boxfuse-sample-java-war-hello.git
+   78  ls
+   79  cd boxfuse-sample-java-war-hello
+   80  ll
+   81  git status
+   82  mvn compile
+   83  mvn test
+   84  mvn package
+   85  ls /home/ec2-user/boxfuse-sample-java-war-hello/target/
+   86  tree .
+   87  mvn install
+   88  ls /home/ec2-user/.m2/repository/com/boxfuse/samples/hello/1.0
